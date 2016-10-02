@@ -1,5 +1,7 @@
 # comics-dm5
 
+[![npm version](https://badge.fury.io/js/comics-dm5.svg)](https://badge.fury.io/js/comics-dm5)
+
 An api wrapper for dm5.com.
 
 ## Usage
