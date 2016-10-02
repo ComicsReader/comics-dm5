@@ -1,0 +1,13 @@
+{
+  "presets": ["es2015", "stage-0"],
+  "plugins": [
+    "syntax-class-properties",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-es2015-arrow-functions",
+    ["transform-runtime", {
+      "polyfill": true,
+      "regenerator": true
+    }]
+  ]
+}
