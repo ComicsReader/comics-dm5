@@ -2,7 +2,7 @@ const assert = require('chai').assert;;
 const dm5 = require('../dist');
 
 describe('Chapter Functionality', function() {
-	describe('#fetchComicIDbyChapterID()', function() {
+	describe('#fetchComicsInfo()', function() {
 		it('should should fetch comicID by chpaterID', function(done) {
 			dm5.fetchComicsInfo('manhua-dongjingshishi').then(info => {
 				for (var key of ['chapters', 'comicName', 'coverImage', 'latestChapter']) {
@@ -25,7 +25,7 @@ describe('Chapter Functionality', function() {
 				done();
 			});
 		});
-	});
+  });
 });
 
 describe('Search Funtionality', function() {
