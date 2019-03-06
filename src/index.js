@@ -83,9 +83,9 @@ export function search(keyword, page=1) {
 		fetch(`http://www.dm5.com/search?title=${encodeURI(keyword)}&language=1&page=${page}`).then(r => r.text()).then(response => {
 
 			var $html = $(response);
-			var results = $html.find('.midBar .item').toArray().map(div => {
+			var results = $html.find('.mh-item').toArray().map(div => {
 
-				var $chapter = $(div).find('a.value.red').first();
+				var $chapter = $(div).find('p.chapter a').first();
 
 				var latestChapter = null;
 				if (typeof $chapter !== 'undefined') {
@@ -96,14 +96,14 @@ export function search(keyword, page=1) {
 				}
 
 				return({
-					coverImage: $(div).find('img').first().attr('src'),
-					comicName: $(div).find('a.title').text(),
+					coverImage: $(div).find('.mh-cover ').first().attr('style').match(/url\((.+)\)/)[1],
+					comicName: $(div).find('h2.title').text(),
 					comicID: $(div).find('a').attr('href').replace(/\//g, ''),
 					latestChapter: latestChapter // chapterID
 				});
 			});
 
-			var pages = $html.find('.pager a').toArray().map(a => $(a).attr('href')).map(href => parseInt(href.match(/page=(\d+)/)[1]));
+			var pages = $html.find('.page-pagination a').toArray().map(a => $(a).attr('href')).map(href => parseInt(href.match(/page=(\d+)/)[1]));
 
 			var total = Math.max(...pages);
 

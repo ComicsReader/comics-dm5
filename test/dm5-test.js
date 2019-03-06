@@ -36,12 +36,12 @@ describe('Search Funtionality', function() {
 				assert.isArray(result.comics)
 
 				if (result.comics.length > 0) {
-					var comic = result.comics[0];
+					const comic = result.comics[0];
 
-					assert.property(comic, 'coverImage')
-					assert.property(comic, 'comicName')
-					assert.property(comic, 'comicID')
-					assert.property(comic, 'latestChapter')
+					assert.isString(comic.coverImage)
+					assert.isString(comic.comicName)
+					assert.isString(comic.comicID)
+					assert.isString(comic.latestChapter)
 				}
 
 				assert.property(result, 'currentPage')
