@@ -52,6 +52,16 @@ describe('#search()', function() {
   });
 });
 
+describe('#fetchImagesCount', function () {
+  it('should return integer', function (done) {
+    dm5.fetchImagesCount('400518').then(imageCount => {
+      assert.isNumber(imageCount)
+      assert.equal(imageCount, 123)
+      done()
+    })
+  })
+})
+
 describe('Test #fetchComicIDbyChapterID', function () {
   it('pending')
 })

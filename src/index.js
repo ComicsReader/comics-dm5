@@ -183,7 +183,9 @@ export function fetchImagesCount(cid) {
 		fetch(getChapterURL(cid)).then(r => r.text()).then(_html => {
 			var chapterDoc = $(_html);
 
-			var imagesCount = chapterDoc.find('.pageBar.bar.down.iList > a').length;
+      const pages = chapterDoc.find('.chapterpager > a').toArray().map(a => $(a).attr('href').match(/\-p(\d+)/)[1]).map(num => parseInt(num, 10));
+      const imagesCount = Math.max(...pages)
+
 			chapterCountData[cid] = imagesCount;
 
 			resolve(imagesCount);
